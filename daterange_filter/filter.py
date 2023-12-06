@@ -11,7 +11,12 @@ import django
 from django import forms
 from django.contrib import admin
 from django.db import models
-from django.utils.translation import ugettext as _
+
+try:
+    from django.utils.translation import ugettext as _  # until django 3.2
+except ImportError:
+    from django.utils.translation import gettext as _  # from django 4
+
 from django.templatetags.static import static
 from django.conf import settings
 
